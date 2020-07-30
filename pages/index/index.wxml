@@ -1,0 +1,34 @@
+<!--index.wxml-->
+<view class="wrap">
+	<view class="weather_now">
+		<view class="city">
+			<image class="site" src="../images/site.png"></image> 杭州市，西湖区
+		</view>
+		<view class="temperature">35℃</view>
+		<view>
+			<image class="site" src="../images/site.png"></image>晴 | 空气 优
+		</view>
+	</view>
+	<!-- wx:for='3' wx:for-index='index' wx:key='index' -->
+	<view class="weather_day">
+		<view>今天</view>
+		<view>
+			<image src="../images/site.png"></image> <text>晴 | 优</text>
+		</view>
+		<view>35℃/26℃</view>
+	</view>
+	<view class="weather_day">
+		<view>今天</view>
+		<view>
+			<image src="../images/site.png"></image> <text>晴 | 优</text>
+		</view>
+		<view>35℃/26℃</view>
+	</view>
+	<view class="weather_day">
+		<view>今天</view>
+		<view>
+			<image src="../images/site.png"></image> <text>晴 | 优</text>
+		</view>
+		<view>35℃/26℃</view>
+	</view>
+</view>

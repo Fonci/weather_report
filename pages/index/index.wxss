@@ -1,0 +1,36 @@
+/**index.wxss**/
+.wrap {
+  width: 100%;
+  height: auto;
+}
+
+.weather_now {
+  width: 100%;
+  height: auto;
+  border-bottom: 1rpx solid red;
+  padding: 30rpx 20rpx;
+}
+.weather_now view{
+  margin-bottom: 30rpx;
+}
+.site,image{
+  width:40rpx;
+  height:40rpx;
+  margin-right: 10rpx;
+  vertical-align: bottom;
+}
+.temperature{
+  font-size: 60rpx;
+}
+.weather_day {
+  width: 100%;
+  height: auto;
+  padding:40rpx 10rpx;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1rpx solid red;
+}
+/* .weather_day view{
+  height:120rpx;
+  line-height: 120rpx;
+} */
