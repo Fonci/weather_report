@@ -1,34 +1,28 @@
 <!--index.wxml-->
 <view class="wrap">
+	<image class='background' src="../images/bg2.jpg" mode="aspectFill"></image>
 	<view class="weather_now">
+
 		<view class="city">
-			<image class="site" src="../images/site.png"></image> 杭州市，西湖区
+			<image class="site" src="../images/site.png"></image> {{currentWeather.currentCity}}
 		</view>
-		<view class="temperature">35℃</view>
-		<view>
-			<image class="site" src="../images/site.png"></image>晴 | 空气 优
+		<view class="temperature">
+			{{temperature}}
 		</view>
+		<view>{{currentWeather.weatherDesc}}</view>
+		<view>{{currentWeather.wind}}</view>
+
 	</view>
-	<!-- wx:for='3' wx:for-index='index' wx:key='index' -->
-	<view class="weather_day">
-		<view>今天</view>
-		<view>
-			<image src="../images/site.png"></image> <text>晴 | 优</text>
+	<view class="weather_day" wx:for="{{dayWeather}}" wx:for-item='item' wx:for-index='index' wx:key="index">
+		<view>{{index==0?"今天":item.date}}</view>
+		<view style="width:35%;">
+			<!-- 白天和夜晚显示不同的图片 -->
+			<image class="site" wx:if='{{time>18||time==18}}' src="{{item.nightPictureUrl}}"></image>
+			<image class="site" wx:else src="{{item.dayPictureUrl}}"></image>
+			<text>{{item.weather}}</text>
 		</view>
-		<view>35℃/26℃</view>
+		<view>{{item.temperature}}</view>
 	</view>
-	<view class="weather_day">
-		<view>今天</view>
-		<view>
-			<image src="../images/site.png"></image> <text>晴 | 优</text>
-		</view>
-		<view>35℃/26℃</view>
-	</view>
-	<view class="weather_day">
-		<view>今天</view>
-		<view>
-			<image src="../images/site.png"></image> <text>晴 | 优</text>
-		</view>
-		<view>35℃/26℃</view>
-	</view>
+
+
 </view>
