@@ -1,0 +1,12 @@
+module.exports = {
+  getHour: function (time) {
+    var date = getDate(time)
+    if (date.getHours() < 10) {
+      time = "0" + date.getHours()
+    } else {
+      time = date.getHours()
+    }
+
+    return time
+  }
+}

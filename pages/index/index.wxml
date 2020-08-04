@@ -1,27 +1,71 @@
 <!--index.wxml-->
 <view class="wrap">
-	<image class='background' src="../images/bg2.jpg" mode="aspectFill"></image>
+	<image class='background' src="../images/bg4.jpg" mode="aspectFill"></image>
 	<view class="weather_now">
-
+		<!-- 搜索框 -->
+		<input class="weui-input" placeholder="请输入城市名称" bindconfirm="bindInputCity" />
+		<!-- 搜索结果列表 -->
+		<view class="search_list" wx:if='{{showSearchList}}'>
+			<view wx:for='{{searchList}}' wx:for-item='item' wx:for-index='index' wx:key='index' bindtap="getLocation" data-location="{{item.id}}">
+				{{item.adm1}}-{{item.adm2}}-{{item.name}}
+			</view>
+		</view>
 		<view class="city">
-			<image class="site" src="../images/site.png"></image> {{currentWeather.currentCity}}
+			{{cityName}}
+			<image class="site" src="../images/site.png" bindtap="getCurrentCity"></image>
 		</view>
 		<view class="temperature">
-			{{temperature}}
+			{{weatherNow.temp}}℃
 		</view>
-		<view>{{currentWeather.weatherDesc}}</view>
-		<view>{{currentWeather.wind}}</view>
+		<view>{{weatherNow.text}}</view>
+		<view>{{weatherNow.windDir}} {{weatherNow.windScale}}级</view>
+		<view>体感温度：{{weatherNow.feelsLike}}℃</view>
+		<view>相对湿度：{{weatherNow.humidity}}%</view>
+	</view>
+	<!-- 24小时天气 -->
+	<view class="weather_hour">
+		<view class="hour" wx:for='{{weatherHour}}' wx:for-item='item' wx:for-index='index' wx:key='index'>
+			<wxs module="timeFormat" src="../filters/timeFormat.wxs"></wxs>
+			<view>
+				<!-- fxTime 2020-08-04T14:00+08:00 小时 时间 -->
+				{{timeFormat.getHour(item.fxTime)}}：00
+			</view>
+			<view>
+				<!-- pop 降水量 可能为空 -->
+				<text wx:if="{{item.pop}}">{{item.pop}}%</text>
+				<text wx:else></text>
+			</view>
+			<view>
+				<!--天气 icon -->
+				<image style="width:50rpx;height:50rpx;" src="../images/weatherIcon/{{item.icon}}.png"></image>
+			</view>
+			<view>
+				<!-- temp 摄氏度 -->
+				{{item.temp}}℃</view>
+		</view>
 
 	</view>
-	<view class="weather_day" wx:for="{{dayWeather}}" wx:for-item='item' wx:for-index='index' wx:key="index">
-		<view>{{index==0?"今天":item.date}}</view>
-		<view style="width:35%;">
-			<!-- 白天和夜晚显示不同的图片 -->
-			<image class="site" wx:if='{{time>18||time==18}}' src="{{item.nightPictureUrl}}"></image>
-			<image class="site" wx:else src="{{item.dayPictureUrl}}"></image>
-			<text>{{item.weather}}</text>
+	<!-- 未来一周天气 -->
+	<view class="weather_day">
+		<view class="day" wx:for='{{weatherDaily}}' wx:for-item='item' wx:for-index='index' wx:key='index'>
+			<view>
+				<!-- 日期fxDate-->
+				{{item.fxDate}}
+			</view>
+			<view>
+				<!-- 白天和夜晚显示不同的图片 白天:iconDay  夜晚：iconNight-->
+				<image class="site" wx:if='{{time>18||time==18}}' src="../images/weatherIcon/{{item.iconNight}}.png"></image>
+				<image wx:else class="site" src="../images/weatherIcon/{{item.iconDay}}.png"></image>
+				<!-- 白天：textDay  夜晚：textNight-->
+				<text wx:if="{{time>18||time==18}}" style="white-space:nowrap;">{{item.textNight}}</text>
+				<text wx:else style="white-space:nowrap;">{{item.textDay}}</text>
+			</view>
+			<view>
+				<!-- tempMax  tempMin -->
+				{{item.tempMin}}℃-{{item.tempMax}}℃
+			</view>
 		</view>
-		<view>{{item.temperature}}</view>
+
 	</view>
 
 

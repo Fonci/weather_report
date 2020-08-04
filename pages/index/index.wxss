@@ -4,11 +4,35 @@
   height: auto;
 }
 
+.weui-input {
+  width: 50%;
+  margin: 20rpx 0;
+  border: 1rpx solid white;
+  border-radius: 10rpx;
+}
+
+.search_list {
+  width: 50%;
+  height: auto;
+  max-height: 500rpx;
+  overflow: scroll;
+  border-radius: 10rpx;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.search_list view {
+  text-align: center;
+  padding: 20rpx 10rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+
 .weather_now {
   width: 100%;
   height: auto;
-  /* border-bottom: 1rpx solid#ddd; */
-  padding:80rpx 40rpx;
+  padding: 40rpx;
+  margin-bottom: 20rpx;
+  text-align: left;
+  border-bottom: 1rpx solid rgb(233, 222, 222);
 }
 
 .background {
@@ -34,16 +58,36 @@
   font-size: 60rpx;
 }
 
+.weather_hour {
+  width: 96%;
+  color: #444;
+  font-size: 28rpx;
+  display: flex;
+  overflow-x: scroll;
+  /* padding-bottom: 60rpx; */
+}
+
+.hour {
+  margin: 0 30rpx;
+}
+
+.hour view {
+  margin-bottom: 10rpx;
+  text-align: center;
+  white-space: nowrap;
+}
+
+
 .weather_day {
   width: 100%;
   height: auto;
+  padding: 60rpx 0;
+}
+
+.day {
   padding: 40rpx 10rpx;
   display: flex;
   justify-content: space-around;
-  border-bottom: 1rpx solid #ddd;
+  border-top: 1rpx solid #ddd;
+  color: #444;
 }
-
-/* .weather_day view{
-  height:120rpx;
-  line-height: 120rpx;
-} */
