@@ -53,8 +53,9 @@ Page({
         key: "da0ccd314e2849bd8f17e706d07680d1"
       },
       success(res) {
-        if (res.data.status == 200) {
+        // if (res.data.status == 200) {
           if (res.data.location.length == 1) {
+            console.log(111)
             that.setData({
               cityName: res.data.location[0].adm1 +
                 "-" + res.data.location[0].adm2 +
@@ -76,7 +77,7 @@ Page({
             }
           }
 
-        }
+        // }
 
       }
     })

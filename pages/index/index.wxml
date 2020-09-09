@@ -32,8 +32,8 @@
 			</view>
 			<view>
 				<!-- pop 降水量 可能为空 -->
-				<text wx:if="{{item.pop}}">{{item.pop}}%</text>
-				<text wx:else></text>
+				<text wx:if="{{item.pop>50}}" style='height:18rpx;'>{{item.pop}}%</text>
+				<text wx:else style='height:18rpx;display:inline-block;'> </text>
 			</view>
 			<view>
 				<!--天气 icon -->
